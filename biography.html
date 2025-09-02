@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            background-image: url("../personalweb-2main/img/background.jpg.jpeg");
+            background-size: cover;
+            overflow: auto;
+            position: relative;
+        }
+
+        nav {
+            width: 100%;
+            height: 10vh;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: rgb(58, 211, 3);
+            text-shadow: 0 0 10px rgb(58, 211, 3);
+        }
+
+        .hamburg, .cancel {
+            cursor: pointer;
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            color: white;
+            display: none;
+            font-size: clamp(2.5rem, 0.5rem + 5vw, 3rem);
+        }
+
+        .nav-container .links {
+            display: flex;
+        }
+
+        .nav-container .links a {
+            font-size: 1.2rem;
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: 550;
+            transition: 0.3s linear;
+        }
+
+        .nav-container .links a:hover {
+            color: rgb(58, 211, 3);
+            border-bottom: 2px solid rgb(58, 211, 3);
+        }
+
+        .nav-container .links .active {
+            color: rgb(58, 211, 3);
+            border-bottom: 2px solid rgb(58, 211, 3);
+        }
+
+        .dropdown {
+            z-index: 1000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            transform: translateY(-500px);
+            width: 100%;
+            height: auto;
+            backdrop-filter: blur(4px) brightness(40%);
+            box-shadow: 0 0 20px black;
+            transition: 0.2s linear;
+        }
+
+        .dropdown .links a {
+            display: flex;
+            color: white;
+            text-decoration: none;
+            padding: 15px 0;
+            justify-content: center;
+            align-items: center;
+            transition: 0.2s linear;
+        }
+
+        .dropdown .links a:hover {
+            background-color: rgb(58, 211, 3);
+        }
+
+        /* PERUBAHAN CSS: Container untuk Biografi */
+        .biography-container {
+            width: 100%;
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .biography-content {
+            width: 80%;
+            max-width: 900px; /* Lebar maksimal disesuaikan untuk teks */
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            color: white;
+        }
+
+        .biography-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .biography-header h1 {
+            font-size: 2.5rem;
+            color: rgb(58, 211, 3);
+            text-shadow: 0 0 10px rgb(58, 211, 3);
+            margin-bottom: 1rem;
+        }
+
+        /* PERUBAHAN CSS: Styling untuk Teks Biografi */
+        .biography-text p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #dddddd;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .biography-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-height: 800px) {
+            body {
+                height: auto;
+                min-height: 100vh;
+            }
+            
+            .biography-container {
+                height: auto;
+                min-height: 90vh;
+            }
+        }
+
+        @media (max-width: 884px) {
+            nav .logo {
+                position: absolute;
+                top: 16px;
+                left: 15px;
+                font-size: 1.5rem;
+            }
+
+            .nav-container .links {
+                display: none;
+            }
+
+            .hamburg, .cancel {
+                display: block;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .biography-container {
+                padding: 1rem;
+            }
+
+            .biography-content {
+                width: 95%;
+                padding: 2rem 1.5rem;
+            }
+
+            .biography-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <title>My Biography- Portfolio Website</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
+                Awal <span>Zakaria</span>
+            </div>
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a href="index.html">Home</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a href="about.html">About</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a href="skill.html">Skills</a></div>
+                <div class="link active" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400"><a href="biography.html">My Biography</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500"><a href="contact.html">Contact</a></div>
+            </div>
+        </div>
+        <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        <div class="dropdown">
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="skill.html">Skills</a>
+                <a href="biography.html">My Biography</a>
+                <a href="contact.html">Contact</a>
+                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="biography-container">
+        <div class="biography-content">
+            <div class="biography-header" data-aos="fade-down" data-aos-duration="1500">
+                <h1>My Biography</h1>
+            </div>
+            <div class="biography-text" data-aos="fade-up" data-aos-duration="1500">
+                <p>
+                    Saya lahir di Jakarta sebagai anak keempat dari lima bersaudara dan dibesarkan dalam keluarga yang sederhana. Masa kecil saya dihabiskan di ibu kota, di mana saya menyelesaikan pendidikan sekolah dasar.
+                </p>
+                <p>
+                    Setelah lulus SD, saya memulai sebuah perjalanan yang sangat membentuk diri saya. Saya melanjutkan pendidikan di Pondok Buntet Pesantren di Cirebon, tepatnya di Almuttaba. Selama tujuh tahun, dari tingkat Madrasah Tsanawiyah hingga Madrasah Aliyah, saya mendalami ilmu dengan jurusan keagamaan.
+                </p>
+                <p>
+                    Kehidupan di pesantren mengajarkan saya lebih dari sekadar ilmu di dalam buku. Di sanalah saya belajar arti kemandirian, disiplin, dan tanggung jawab. Pengalaman ini membuka wawasan saya dan menjadi fondasi karakter yang saya miliki hari ini.
+                </p>
+                <p>
+                    Perjalanan ini juga memberikan saya sebuah perspektif. Banyak orang mungkin memandang sebelah mata pada hal-hal keagamaan, seringkali menyalahkan ajaran ketika individu berbuat salah. Namun, saya belajar bahwa agama adalah panduan yang membuat hidup lebih terarah dan damai. Keyakinan saya adalah, yang perlu diperbaiki adalah manusianya, bukan ajarannya. Nilai-nilai inilah yang saya bawa dalam setiap langkah kehidupan, termasuk dalam dunia teknologi yang kini saya tekuni.
+                </p>
+                <p>
+                  Setelah keluar dari pondok dan kembali ke Jakarta pada tahun 2023, saya memulai kehidupan baru seperti orang pada umumnya, yaitu mencari pekerjaan. Sudah mencoba melamar ke sana-sini, namun belum ada yang menerima. Akhirnya, saya ikut bekerja bersama bapak saya yang berprofesi sebagai pengurus tanaman atau taman di rumah orang kaya. Saya membantu beliau memangkas daun bonsai yang sudah panjang, memotong rumput, lalu menyapu hingga selesai. Biasanya kami pulang sekitar waktu Dzuhur atau pukul 12.00 siang. Aktivitas ini saya jalani selama kurang lebih tiga bulan.
+                </p>
+
+                <p>
+                   Setelah itu, saya mendapat tawaran kerja sebagai freelancer dari Desember 2023 hingga April 2024. Dalam perjalanan ini, saya sering merenungkan masa depan: keterampilan apa yang harus saya tingkatkan, arah hidup apa yang perlu saya ambil. Setelah berpikir panjang, saya memutuskan untuk kuliah. Saya meminta izin kepada orang tua, namun karena mereka tidak mampu membiayai penuh, akhirnya saya mengambil keputusan untuk kuliah sambil bekerja.
+                </p>
+
+                <p>
+                    Pada bulan April 2024, saya diberhentikan dari pekerjaan freelance tersebut dan sempat kebingungan karena tidak memiliki penghasilan untuk membiayai kuliah. Saya terus berusaha mencari pekerjaan, hingga akhirnya Allah memberikan jalan: saya diterima sebagai office boy pada Mei 2024, pekerjaan yang masih saya jalani hingga saat ini. Walaupun terkadang saya merasa berat dengan gaji yang terbatas, saya tetap bersyukur karena pekerjaan ini membantu menopang kebutuhan pribadi saya sekaligus biaya kuliah.
+                 </p>
+
+                <p>
+                     Dalam waktu itu, saya juga memikirkan jurusan yang ingin saya ambil, hingga akhirnya memutuskan untuk menempuh pendidikan di Universitas Pamulang, Fakultas Ilmu Komputer, jurusan Teknik Informatika. Kini, di tahun 2025 bulan September, saya sudah menjalani semester 3.
+                </p>
+
+                <p>
+                    Masuk ke dunia Teknik Informatika awalnya membuat saya kaget dan bingung karena sebelumnya saya tidak pernah bertemu dengan mata pelajaran serupa. Banyak mata kuliah yang penuh dengan logika dan matematika, sehingga awalnya terasa sulit. Namun, seiring berjalannya waktu, saya belajar sedikit demi sedikit. Saya juga menumbuhkan cita-cita untuk menjadi seorang web developer, merancang dan membuat website, baik untuk kebutuhan desain maupun aplikasi.
+                </p>
+
+                <p>
+                   Tekad saya sangat kuat untuk mencapai tujuan tersebut. Saya berharap Gusti Allah senantiasa mempermudah langkah saya, memberikan ilmu yang bermanfaat, dan membukakan jalan menuju masa depan yang lebih baik. Saat ini, saya masih berjuang menjalani kuliah sambil bekerja, dengan harapan bisa mewujudkan cita-cita saya.
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({offset: 0});
+        
+        function hamburg() {
+            const navbar = document.querySelector(".dropdown")
+            navbar.style.transform = "translateY(0px)"
+        }
+        
+        function cancel() {
+            const navbar = document.querySelector(".dropdown")
+            navbar.style.transform = "translateY(-500px)"
+        }
+    </script>
+</body>
+</html>
+
